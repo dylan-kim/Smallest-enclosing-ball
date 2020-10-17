@@ -24,16 +24,16 @@ colors = ["red", "orange", "green", "blue", "violet"]
 
 fen = Tk()
 fen.title('Project : The smallest enclosing ball')
-cv = Canvas(fen, width=750, height=600, bg='snow')
+cv = Canvas(fen, width = 750, height = 600, bg = 'snow')
 cv.pack(side = 'left')
-commande = Frame(fen, width=390, height=560)
+commande = Frame(fen, width = 390, height = 560)
 commande.pack()
 
 # Initialize scroll widget.
 scale = Scale(commande, orient = 'horizontal', from_ = 3, to = 100, resolution = 1, length = 350, label = 'Number of dots')
-scale.grid(row = 1,column = 1)
+scale.grid(row = 1, column = 1)
 
-def create_points() :
+def create_points():
     """Create n random dots on the canvas."""
     global n, dots
     n = scale.get()
@@ -41,7 +41,7 @@ def create_points() :
     for (x,y) in dots:
         cv.create_rectangle(x, y, x+3, y+3, fill ='blue')
 
-def triangle(liste, a, b, c, x_dot_1, x_dot_2, x_dot_3, y_dot_1, y_dot_2, y_dot_3) :
+def triangle(liste, a, b, c, x_dot_1, x_dot_2, x_dot_3, y_dot_1, y_dot_2, y_dot_3):
     # Al-Kashi Theorem.
     angle_radian_u = acos((-a**2+b**2+c**2)/(2*b*c))
     angle_degre_u = int((angle_radian_u*180)/pi)
@@ -112,7 +112,6 @@ def clean_all():
     clean_list()
     reinitialize_widget()
 
-# Determination si le resultat est pair ou triplet (cercle de diamètre de 2 points, ou d'un cercle formé par un triangle)
 def main():
     cv.delete(ALL)
     create_points()
@@ -125,7 +124,7 @@ def main():
             distance = sqrt((x1-x2)**2 + (y1-y2)**2)
             distances.append(distance)
 
-            # segment contains all the distance between 2 dots, and the coord of the 2 dots.
+            # Segment contains all the distance between 2 dots, and the coord of the 2 dots.
             segment = distance, (x1,y1), (x2,y2)
             segments.append(segment)
 
@@ -172,7 +171,7 @@ def main():
     clean_list()
 
 validate = Button(commande, text = 'Enclosing ball with n dots', command = main)
-validate.grid(row=3, column=1)
+validate.grid(row = 3, column = 1)
 
 quit = Button(fen, text = 'Quit', command = fen.destroy)
 quit.pack(side = 'bottom')
